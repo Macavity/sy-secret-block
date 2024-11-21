@@ -1,10 +1,10 @@
 {
     "name": "sy-secret-block",
-    "version": "0.3.3",
-    "author": "dicarne",
+    "version": "0.4.0",
+    "author": "macavity",
     "type": "module",
     "repository": {
-        "url": "https://github.com/dicarne/sy-secret-block"
+        "url": "https://github.com/macavity/sy-secret-block"
     },
     "scripts": {
         "make-link": "node --no-warnings ./scripts/make_dev_link.js",
