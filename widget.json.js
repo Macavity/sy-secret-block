@@ -1,4 +1,5 @@
-const pkg = require("./package.json");
+import pkg from "./package.json" with { type: "json" };
+import { writeFile, copyFile } from "fs/promises";
 
 const json = {
     "name": pkg.name,
@@ -27,24 +28,17 @@ const json = {
     }
 };
 
-const fs = require("fs");
 
-fs.writeFile("./dist/widget.json", JSON.stringify(json, null, 4), (err) => {
-    if (err) {
-        console.log("widget.json 创建失败", err);
+async function writeJson() {
+    try {
+        await writeFile("./dist/widget.json", JSON.stringify(json, null, 4));        
+        await writeFile("./widget.json", JSON.stringify(json, null, 4));
+        await copyFile('./preview.png', './dist/preview.png');
+        await copyFile('./icon.png', './dist/icon.png');
+        await copyFile('./README.md', './dist/README.md');
+    } catch (error) {
+        console.error("Error writing files:", error);
     }
-});
-fs.writeFile("./widget.json", JSON.stringify(json, null, 4), (err) => {
-    if (err) {
-        console.log("widget.json 创建失败", err);
-    }
-});
-fs.copyFile('./preview.png', './dist/preview.png', (err) => {
-    if (err) throw err;
-});
-fs.copyFile('./icon.png', './dist/icon.png', (err) => {
-    if (err) throw err;
-});
-fs.copyFile('./README.md', './dist/README.md', (err) => {
-    if (err) throw err;
-});
+}
+
+writeJson();

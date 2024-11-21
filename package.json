@@ -11,7 +11,8 @@
         "dev": "NODE_ENV=development vite build",
         "dev-watch": "NODE_ENV=development vite build --watch",
         "build": "vue-tsc --noEmit && vite build && node ./widget.json.js",
-        "serve": "vite preview"
+        "serve": "vite preview",
+        "widget": "node ./widget.json.js"
     },
     "dependencies": {
         "crypto-js": "^4.1.1",
@@ -22,6 +23,7 @@
         "vue-i18n": "^10.0.4"
     },
     "devDependencies": {
+        "@intlify/devtools-types": "^10.0.4",
         "@types/crypto-js": "^4.0.2",
         "@types/lodash": "^4.14.197",
         "@vitejs/plugin-vue": "^1.9.3",
